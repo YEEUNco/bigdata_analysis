@@ -40,8 +40,9 @@ randomforest, xgboost 모두 int만 처리할 수 있음으로 파생변수를 �
 
 ---
 ### 기출 8회차
+급 전처리 해야할 것들이 는 느낌?
 
-
+새로운 평가지표 mae - mean_absolute_error
 ---
 ### 기출 9회차
 
