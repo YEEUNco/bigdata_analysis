@@ -1,11 +1,11 @@
-## 기출 정리
+# 기출 정리
 
 ### 기출 2회차 
-
+---
 ### 기출 3회차
-
+---
 ### 기출 4회차
-
+---
 ### 기출 5회차
 처음으로 회귀문제가 나옴
 RandomForestRegressor 사용만 다르지 똑같음
@@ -21,6 +21,7 @@ np.sqrt(mean_squared_error(x_test, pred))
 
 그리고 error는 작을 수록 좋은 것
 
+---
 ### 기출 6회차
 test의 범주형 변수와 train의 범주형 변수의 수가 맞지 않음<br>
 -> 이런 경우는 get_dummies하고 randomforest에 넣으면 error발생
@@ -32,6 +33,10 @@ test의 범주형 변수와 train의 범주형 변수의 수가 맞지 않음<br
 참고
 * randomforest는 column의 순서 중요!!
 
+---
 ### 기출 7회차
 
+---
 ### 기출 8회차
+
+---
