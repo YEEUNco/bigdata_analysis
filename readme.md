@@ -8,8 +8,8 @@
     df['컬럼명'].isin(['A', 'B', 'C'])
     #해당 list에 존재하는 열만 필터링
     ~~~
-    * .str.contains() - series에서 특정 문자열 포함 여링
-    ~~제
+    * .str.contains() - series에서 특정 문자열 포함 여부
+    ~~~
     df[df['상품명'].str.contains('apple')]
     #apple이 포함되어있는 row 필터링
     ~~~
