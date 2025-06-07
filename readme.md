@@ -99,10 +99,40 @@ df['newEduLevel'] = df['Education_Level'].apply(lambda x: 1 if 'Graduate' in x e
 ~~~
 
 9. time_series
+* pd.to_datetime()
+~~~
+df['Yr_Mo_Dy'] = pd.to_datetime(df['Yr_Mo_Dy'])
+~~~
+* import datetime - 숫자들을 엮어서 datetime으로 만드는 거 같음
+~~~
+import datetime
+def change_year(x):
+  year = x.year
+  if year>2061:
+    return pd.to_datetime(datetime.date(year-100, x.month, x.day))
+  else:
+    return x
+~~~
 
 10. merge, concat
+* merge
+~~~
+pd.merge(df5,df6,on='Algeria',how='inner')
+pd.merge(df5,df6,on='Algeria',how='outer')
+~~~
 
+* concat
+~~~
+pd.concat([df1,df2])
+pd.concat([df3,df4],join='outer').fillna(0)
+~~~
 
+11. 결측치 처리
+* fillna
+~~~
+df = df.fillna(method='ffill').fillna(method='bfill') #일단 앞에 값으로 대체 젤 앞에는 뒤에 값으로 대체
+
+~~~
 
 ## 2과목
 
