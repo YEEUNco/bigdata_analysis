@@ -9,7 +9,7 @@
     #해당 list에 존재하는 열만 필터링
     ~~~
     * .str.contains() - series에서 특정 문자열 포함 여링
-    ~~~
+    ~~제
     df[df['상품명'].str.contains('apple')]
     #apple이 포함되어있는 row 필터링
     ~~~
@@ -42,7 +42,66 @@ df.drop(subset=['A','B']) # A 또는 B열이 na이면 삭제
 .std(ddof=1)
 .std()
 ~~~
-4. pivot_table
+4. pivot<br>
+unstack과 pivot의 차이가 뭘까?<br>
+둘다 dataframe을 넓게(pivot) 바꾸는 데 쓰임<br>
+
+    * unstack() : 보통 groupby+unstack() 함께 사용됨<br>
+        * 전제: multiIndex 되어있어야함
+        * 목적: index레벨을 columns으로 이동
+        * 집계 기능: 없용
+        * 중복값 허용 X
+        
+    * pivot_table()
+        * 전제: 일반 dataframe
+        * 목적: 원하는 행/열 기준으로 집계된 table 생성
+        * 집계 기능: aggfunc으로 가능
+        * 중복값 허용
+
+5. iloc vs loc
+
+6. str 함수들
+~~~
+.str.startswith('') # 특정 문자로 시작하는거
+.str.len() #단어수 구하기 
+~~~
+
+7. groupby
+~~~
+groupby([]).특정컬럼.agg(['mean', 'var', 'max', 'min']) #agg함수 많이 사용됨
+groubpy([], as_index=False) #as_index=False하면 새로운 인덱스 만들어지고 column자체가 index화 되지 않음
+groupby([multi]).연산.unstack() #pivot화, 이거는 multiIndex일 때 뒤에 columns이 table의 columns화
+groupby().연산.to_frame() # dataframe으로 만들기
+
+#부가적으로 어렵다고 생각했던 연습문제
+temp = df.groupby(['neighbourhood_group']).room_type.value_counts().unstack()
+temp.loc[:,:] = temp.values/temp.sum(axis=1).values.reshape(-1,1)
+
+~~~
+
+8. apply, map
+* map - 1:1 mapping이 필요할 때
+~~~
+category = {
+    'Unknown' : 'N',
+    'Less than $40K' : 'a',
+    '$40K - $60K' : 'b',
+    '$60K - $80K' : 'c',
+    "$80K - $120K" : "d",
+    '$120K +' : 'e'
+}
+df['Income_Category'] = df['Income_Category'].map(lambda x: category[x])
+~~~
+
+* apply - 함수를 적용해야할 때
+~~~
+df['newEduLevel'] = df['Education_Level'].apply(lambda x: 1 if 'Graduate' in x else 0)
+~~~
+
+9. time_series
+
+10. merge, concat
+
 
 
 ## 2과목
